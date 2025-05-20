@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel Bota Twitch</title>
+    <style>
+        body { font-family: Arial; text-align: center; margin-top: 50px; }
+        button { padding: 10px 20px; margin: 5px; font-size: 16px; }
+        .stats { font-size: 20px; margin: 20px 0; }
+        input[type="password"] { margin: 10px; padding: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Statystyki Twitch Bota</h1>
+    <div class="stats">
+        <p>Kills: {{ stats.kills }}</p>
+        <p>Deaths: {{ stats.deaths }}</p>
+        <p>K/D: {{ kd|round(2) }}</p>
+    </div>
+    <form method="POST">
+        {% if password_required %}
+            <input type="password" name="password" placeholder="Hasło" required>
+        {% endif %}
+        <button name="action" value="kill">+ Kill</button>
+        <button name="action" value="death">+ Death</button>
+        <button name="action" value="reset">Reset</button>
+        <button name="action" value="resmonth">Reset miesięczny</button>
+    </form>
+</body>
+</html>
